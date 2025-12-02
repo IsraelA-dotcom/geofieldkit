@@ -17,8 +17,6 @@ allow_headers=["*"],
 
 app.include_router(samples.router, prefix="/api/samples", tags=["samples"])
 
-
 @app.get("/")
 def root():
 return {"message": "GeoFieldKit API v1.0", "status": "operational"}
-
