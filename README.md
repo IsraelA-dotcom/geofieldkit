@@ -1,2 +1,1 @@
-# geofieldkit
-Field data collection for Geology students
+# GeoFieldKit
