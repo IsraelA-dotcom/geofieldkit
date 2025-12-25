@@ -11,7 +11,7 @@ router = APIRouter()
 @router.post("/", response_model=SampleResponse)
 def create_sample(sample: SampleCreate, db: Session = Depends(get_db)):
     point = WKTElement(f'POINT({sample.longitude} {sample.latitude})', srid=4326)
-    
+
     db_sample = GeologicalSample(
         sample_id=sample.sample_id,
         rock_type=sample.rock_type,
@@ -22,11 +22,11 @@ def create_sample(sample: SampleCreate, db: Session = Depends(get_db)):
         collector=sample.collector,
         notes=sample.notes
     )
-    
+
     db.add(db_sample)
     db.commit()
     db.refresh(db_sample)
-    
+
     return {
         "id": db_sample.id,
         "sample_id": db_sample.sample_id,
@@ -43,5 +43,5 @@ def create_sample(sample: SampleCreate, db: Session = Depends(get_db)):
 
 @router.get("/", response_model=List[SampleResponse])
 def get_samples(db: Session = Depends(get_db)):
-    samples = db.query(GeologicalSample).all()
+    samples = db.query(GeologicalSample.all()
     return samples
