@@ -43,5 +43,5 @@ def create_sample(sample: SampleCreate, db: Session = Depends(get_db)):
 
 @router.get("/", response_model=List[SampleResponse])
 def get_samples(db: Session = Depends(get_db)):
-    samples = db.query(GeologicalSample.all()
+    samples = db.query(GeologicalSample).all()
     return samples
