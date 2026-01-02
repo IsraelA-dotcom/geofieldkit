@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: geofieldkit
+    env: python
+    rootDir: backend
+    buildCommand: |
+      apt-get update
+      apt-get install -y gcc postgresql-client
+      pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
