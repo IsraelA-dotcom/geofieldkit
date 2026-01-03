@@ -13,5 +13,18 @@ class SampleCreate(BaseModel):
     collector: str
     notes: Optional[str]
 
+class SampleResponse(BaseModel):
+    id: int
+    sample_id: str
+    rock_type: str
+    description: str
+    latitude: float
+    longitude: float
+    strike: Optional[float]
+    dip: Optional[float]
+    collector: float
+    collection_date: datetime
+    notes: Optional[str]
+
     class Config:
         from_attributes = True
