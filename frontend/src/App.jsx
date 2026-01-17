@@ -72,7 +72,12 @@ function App() {
           </button>
         </div>
 
-        {showForm && <SampleForm onSubmit={handleAddSample} />}
+        {showForm && (
+          <SampleForm
+            onSubmit={handleAddSample}
+            onCancel={() => setShowForm(false)}
+          />
+        )}
 
         <MapView samples={samples} onMarkerClick={setSelectedSample} />
 
