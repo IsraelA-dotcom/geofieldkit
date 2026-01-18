@@ -18,7 +18,7 @@ export default function MapView({ samples, onMarkerClick }) {
     <MapContainer
       center={[6.5244, 3.3792]}
       zoom={10}
-      style={{ height: "400px", width: "100%" }}
+      style={{ height: "100%", width: "100%" }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
