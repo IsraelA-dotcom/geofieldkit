@@ -45,7 +45,6 @@ function App() {
 
   return (
     <div style={appContainerStyle}>
-      {/* Header */}
       <header style={headerStyle}>
         <h1 style={titleStyle}>GeoFieldKit</h1>
         <div style={headerMetaStyle}>
@@ -53,7 +52,6 @@ function App() {
         </div>
       </header>
 
-      {/* Error banner */}
       {error && (
         <div style={errorStyle}>
           {error}
@@ -63,10 +61,8 @@ function App() {
         </div>
       )}
 
-      {/* Main layout: Sidebar + Map */}
-      <div style={mainLayoutStyle}>
-        {/* Sidebar */}
-        <aside style={sidebarStyle}>
+      <div style={mainLayoutStyle} className="main-layout">
+        <aside style={sidebarStyle} className="sidebar">
           <button
             onClick={() => setShowForm(!showForm)}
             style={showForm ? cancelButtonStyle : newSampleButtonStyle}
@@ -118,13 +114,11 @@ function App() {
           )}
         </aside>
 
-        {/* Map area */}
-        <main style={mapAreaStyle}>
+        <main style={mapAreaStyle} className="map-area">
           <MapView samples={samples} onMarkerClick={setSelectedSample} />
 
-          {/* Sample details panel (overlays map) */}
           {selectedSample && !showForm && (
-            <div style={detailsPanelStyle}>
+            <div style={detailsPanelStyle} className="details-panel">
               <div style={detailsHeaderStyle}>
                 <h3 style={detailsTitleStyle}>{selectedSample.sample_id}</h3>
                 <button
@@ -192,11 +186,11 @@ function App() {
   );
 }
 
-// Layout styles
 const appContainerStyle = {
   display: "flex",
   flexDirection: "column",
   height: "100vh",
+  width: "100%",
   overflow: "hidden",
 };
 
@@ -226,24 +220,28 @@ const mainLayoutStyle = {
   display: "flex",
   flex: 1,
   overflow: "hidden",
+  width: "100%",
 };
 
 const sidebarStyle = {
-  width: "320px",
+  width: "100%",
+  maxWidth: "360px",
+  minWidth: "280px",
   backgroundColor: "#f5f5f5",
   borderRight: "1px solid #ddd",
   display: "flex",
   flexDirection: "column",
   overflow: "hidden",
+  flexShrink: 0,
 };
 
 const mapAreaStyle = {
   flex: 1,
   position: "relative",
   overflow: "hidden",
+  minWidth: 0,
 };
 
-// Sidebar styles
 const newSampleButtonStyle = {
   margin: "16px",
   padding: "12px",
@@ -257,8 +255,15 @@ const newSampleButtonStyle = {
 };
 
 const cancelButtonStyle = {
-  ...newSampleButtonStyle,
+  margin: "16px",
+  padding: "12px",
   backgroundColor: "#666",
+  color: "#fff",
+  border: "none",
+  borderRadius: "4px",
+  cursor: "pointer",
+  fontSize: "14px",
+  fontWeight: "500",
 };
 
 const formContainerStyle = {
@@ -304,9 +309,12 @@ const sampleCardStyle = {
 };
 
 const selectedSampleCardStyle = {
-  ...sampleCardStyle,
-  borderColor: "#000",
-  backgroundColor: "#fafafa",
+  backgroundColor: "#fff",
+  border: "2px solid #000",
+  borderRadius: "4px",
+  padding: "10px",
+  marginBottom: "8px",
+  cursor: "pointer",
 };
 
 const cardIdStyle = {
@@ -327,7 +335,6 @@ const cardCoordsStyle = {
   fontFamily: "monospace",
 };
 
-// Details panel styles
 const detailsPanelStyle = {
   position: "absolute",
   bottom: "20px",
@@ -387,7 +394,6 @@ const monoStyle = {
   fontFamily: "monospace",
 };
 
-// Other styles
 const errorStyle = {
   backgroundColor: "#fee",
   color: "#c00",

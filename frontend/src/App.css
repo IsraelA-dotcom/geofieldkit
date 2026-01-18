@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
     sans-serif;
@@ -11,5 +19,32 @@ body {
 }
 
 .App {
-  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+/* Mobile: Stack sidebar above map */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column !important;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 40% !important;
+    border-right: none !important;
+    border-bottom: 1px solid #ddd !important;
+  }
+
+  .map-area {
+    height: 60% !important;
+  }
+
+  .details-panel {
+    width: calc(100% - 32px) !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    left: 16px !important;
+  }
 }
